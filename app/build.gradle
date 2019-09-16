@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.starcodex.cleanarchitecture"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            versionNameSuffix "-DEV"
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+            buildConfigField "String", "DB_NAME", "\"debug-main-db\""
+            debuggable true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources true
+
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+            buildConfigField "String", "DB_NAME", "\"release-main-db\""
+        }
+    }
+
+    dataBinding { enabled = true }
+
+    kapt { generateStubs = true }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'android.arch.lifecycle:runtime:1.1.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    api "androidx.fragment:fragment:1.2.0-alpha03"
+    api "androidx.fragment:fragment-ktx:1.2.0-alpha03"
+
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.google.dagger:dagger:2.21'
+    implementation 'com.google.dagger:dagger-android:2.21'
+    implementation 'com.google.dagger:dagger-android-support:2.21'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    implementation 'androidx.room:room-runtime:2.2.0-rc01'
+    implementation 'androidx.room:room-rxjava2:2.2.0-rc01'
+    kapt 'androidx.room:room-compiler:2.2.0-rc01'
+
+    // glide for image
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    kapt "com.github.bumptech.glide:compiler:4.9.0"
+
+    kapt 'com.google.dagger:dagger-compiler:2.21'
+    kapt 'com.google.dagger:dagger-android-processor:2.21'
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}
