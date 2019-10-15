@@ -7,6 +7,7 @@ import com.starcodex.cleanarchitecture.data.AppDatabase
 import com.starcodex.cleanarchitecture.data.movies.datasorce.dao.CategoriesMoviesDao
 import com.starcodex.cleanarchitecture.data.movies.datasorce.dao.CategoryDao
 import com.starcodex.cleanarchitecture.data.movies.datasorce.dao.MovieDao
+import com.starcodex.cleanarchitecture.utils.di.network.ApiModule
 import dagger.Module
 import dagger.Provides
 

@@ -12,8 +12,17 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testApplicationId "com.starcodex.cleanarchitecture.test"
+        testInstrumentationRunner "com.starcodex.cleanarchitecture.TestApplicationRunner"
     }
+
+    testOptions {
+        reportDir = "$project.buildDir/results/report"
+        resultsDir = "$project.buildDir/results"
+        unitTests.returnDefaultValues = true
+    }
+
     buildTypes {
         debug {
             versionNameSuffix "-DEV"
@@ -38,6 +47,14 @@ android {
             buildConfigField "String", "DB_NAME", "\"release-main-db\""
         }
     }
+
+    android.applicationVariants.all {
+        def aptOutputDir = new File(buildDir, "generated/source/kapt/${it.unitTestVariant.dirName}")
+        it.unitTestVariant.addJavaSourceFoldersToModel(aptOutputDir)
+        assembleDebug.finalizedBy('assembleDebugUnitTest')
+    }
+
+    sourceSets { debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] } }
 
     dataBinding { enabled = true }
 
@@ -90,9 +107,43 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.21'
     kapt 'com.google.dagger:dagger-android-processor:2.21'
 
-
-    testImplementation 'junit:junit:4.12'
+    // Android Test
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    // Dagger
+    androidTestImplementation 'com.google.dagger:dagger:2.21'
+    androidTestImplementation 'com.google.dagger:dagger-android:2.21'
+    androidTestImplementation 'com.google.dagger:dagger-android-support:2.21'
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.21'
+    kaptAndroidTest 'com.google.dagger:dagger-android-processor:2.21'
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.21'
+
+    // ---------- Mockito ----------
+    androidTestImplementation "org.mockito:mockito-core:2.18.3"
+    androidTestImplementation "org.mockito:mockito-android:2.18.3"
+    androidTestImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
+
+    // JUNIT
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+
+    // UNIT TESTS
+    testImplementation 'junit:junit:4.12'
+
+    // ----------- Dagger -------------
+    // Dagger
+    testImplementation 'com.google.dagger:dagger:2.21'
+    testImplementation 'com.google.dagger:dagger-android:2.21'
+    testImplementation 'com.google.dagger:dagger-android-support:2.21'
+    kaptTest 'com.google.dagger:dagger-compiler:2.21'
+    kaptTest 'com.google.dagger:dagger-android-processor:2.21'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+
+    testImplementation "org.mockito:mockito-android:2.18.3"
+    testImplementation 'junit:junit:4.12'
 
 }
