@@ -3,12 +3,13 @@ package com.starcodex.cleanarchitecture.ui.movies.list.adapter
 import android.widget.ImageView
 import androidx.databinding.BaseObservable
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.starcodex.cleanarchitecture.BuildConfig.*
 import com.starcodex.cleanarchitecture.R
 import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
 
-class MovieRowViewModel(var movie: MovieItem): BaseObservable() {
+class MovieRowViewModel(var movie: MovieItem): ViewModel() {
 
     val title: String
         get() = movie!!.title!!

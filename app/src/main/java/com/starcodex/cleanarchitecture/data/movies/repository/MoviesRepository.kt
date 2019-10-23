@@ -9,6 +9,7 @@ import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.CategoryEnti
 import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.CategoryMovieEntity
 import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.MovieEntity
 import com.starcodex.cleanarchitecture.data.movies.datasorce.remote.MoviesListApiClient
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -20,7 +21,7 @@ class MoviesRepository
     private val categoryDao: CategoryDao
 ): RemoteMoviesSource, LocalMoviesSource {
 
-    override fun getLocalMoviesList(category: String): Observable<List<MovieEntity>> {
+    override fun getLocalMoviesList(category: String): Maybe<List<MovieEntity>> {
         return categoriesMoviesDao.getMoviesByCategory(category)
     }
 

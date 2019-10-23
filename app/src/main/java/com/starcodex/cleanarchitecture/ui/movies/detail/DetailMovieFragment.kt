@@ -5,19 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.starcodex.cleanarchitecture.databinding.MovieDetailBinding
 import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
 import com.starcodex.cleanarchitecture.ui.movies.list.adapter.MovieRowViewModel
 import com.starcodex.cleanarchitecture.utils.commons.BaseFragment
 
-class DetailMovieFragment(var movieItem: MovieItem) : BaseFragment(){
+class DetailMovieFragment(var movieItem: MovieItem) : BaseFragment<MovieDetailBinding,MovieRowViewModel>(){
 
-    companion object {
-        fun newInstance(movieItem : MovieItem) = DetailMovieFragment(movieItem)
-    }
-
-
-    lateinit var binding: MovieDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

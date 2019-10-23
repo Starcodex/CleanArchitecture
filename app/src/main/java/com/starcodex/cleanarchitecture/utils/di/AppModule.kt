@@ -14,8 +14,8 @@ class AppModule {
     @Provides
     fun provideExecutionThreads(): ExecutionThreads {
         return object : ExecutionThreads {
-            override fun ui(): Scheduler = AndroidSchedulers.mainThread()
-            override fun io(): Scheduler = Schedulers.io()
+            override fun ui() = AndroidSchedulers.mainThread()
+            override fun io() = Schedulers.io()
         }
     }
 

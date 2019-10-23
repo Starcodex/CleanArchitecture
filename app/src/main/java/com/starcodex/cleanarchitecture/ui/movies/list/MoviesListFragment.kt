@@ -25,30 +25,25 @@ import com.starcodex.cleanarchitecture.ui.movies.detail.DetailMovieFragment
 import kotlin.collections.HashMap
 
 
-class MoviesListFragment : BaseFragment(), OnItemClickListener, AdapterView.OnItemSelectedListener {
+class MoviesListFragment : BaseFragment<MainFragmentBinding, MoviesListViewModel>(), OnItemClickListener, AdapterView.OnItemSelectedListener {
 
-    companion object {
-        fun newInstance() = MoviesListFragment()
-    }
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
     val viewModel: MoviesListViewModel by viewModels { viewModelFactory }
-
     private var activityInterface: FragmentActivityInteraction? = null
-    lateinit var binding: MainFragmentBinding
     lateinit var moviesAdapter: MoviesListAdapter
+
 
     // Spinner Dropdown in ActionBar
     lateinit var categoriesSelector: Spinner
     var spinnerMap = HashMap<String, String>()
     var spinnerPosition: Int = -1
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = MainFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -77,7 +72,7 @@ class MoviesListFragment : BaseFragment(), OnItemClickListener, AdapterView.OnIt
 
     // Handle Click On RecyclerViewItems
     override fun onItemClick(item: MovieItem) {
-        activityInterface!!.replaceFragmentCurrent(DetailMovieFragment.newInstance(item))
+        activityInterface!!.replaceFragmentCurrent(DetailMovieFragment(item))
     }
 
     // Create Menu
@@ -125,7 +120,7 @@ class MoviesListFragment : BaseFragment(), OnItemClickListener, AdapterView.OnIt
     }
 
     // Save Spinner State
-    override fun onSaveInstanceState(outState: Bundle) {
+/*    override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt("spinnerPosition", categoriesSelector.selectedItemPosition)
-    }
+    }*/
 }

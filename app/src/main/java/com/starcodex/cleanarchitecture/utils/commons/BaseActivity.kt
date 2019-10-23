@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.starcodex.cleanarchitecture.R
 import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity: DaggerAppCompatActivity() {
+abstract class BaseActivity: DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ open class BaseActivity: DaggerAppCompatActivity() {
         var handled = false
         val fragments = supportFragmentManager.fragments
         for (f in fragments) {
-            if (f != null && f is BaseFragment)
+            if (f != null && f is BaseFragment<*,*>)
                 handled = f.onBackPressed()
             if (handled) break
         }

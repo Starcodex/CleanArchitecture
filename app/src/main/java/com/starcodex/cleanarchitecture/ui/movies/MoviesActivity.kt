@@ -12,7 +12,7 @@ class MoviesActivity : BaseActivity(), FragmentActivityInteraction {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragment(MoviesListFragment.newInstance())
+        addFragment(MoviesListFragment())
     }
 
 }
