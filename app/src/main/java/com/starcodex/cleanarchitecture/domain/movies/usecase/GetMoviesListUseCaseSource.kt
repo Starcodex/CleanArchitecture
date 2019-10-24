@@ -6,8 +6,8 @@ import io.reactivex.disposables.Disposable
 
 interface GetMoviesListUseCaseSource {
 
-    fun executeListLocal(category: String) : Observable<List<MovieItem>>?
+    fun executeListLocal(category: String, onComplete: (it: List<MovieItem>) -> Unit) : Disposable
 
-    fun executeListRemote(category: String) : Observable<List<MovieItem>>?
+    fun executeListRemote(category: String, onComplete: (it: List<MovieItem>) -> Unit) : Disposable
 
 }

@@ -16,7 +16,7 @@ class MoviesListViewModel @Inject constructor(private var moviesListUseCase: Get
     override fun getMovieslistLiveData(): LiveData<List<MovieItem>> = moviesListLiveData
 
     override fun loadList(category: String) {
-        compositeDisposable.addAll(moviesListUseCase.executeListLocal(category)!!.subscribe {
+        compositeDisposable.addAll(moviesListUseCase.executeListLocal(category) {
             moviesListLiveData.postValue(it)
         })
     }

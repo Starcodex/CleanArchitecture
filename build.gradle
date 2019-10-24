@@ -14,7 +14,21 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
+ext {
+    SUPPORT_LIBRARY_VERSION = '27.1.1'
+    ROOM_VERSION = '1.1.1'
+    RETROFIT_VERSION = '2.4.0'
+    DAGGER_VERSION = '2.17'
+    RXJAVA_VERSION = '2.1.13'
+    RXANDROID_VERSION = '2.0.2'
+    GLIDE_VERSION = '4.7.1'
+    STETHO_VERSION = '1.5.0'
+    MOCKITO_KOTLIN_VERSION = '2.0.0-RC1'
+    ESPRESSO_VERSION = '2.2.2'
+    JUNIT_VERSION = '4.12'
+    DEXMAKER_VERSION = '2.2.0'
+    MOCKITO_VERSION = '2.8.47'
+}
 allprojects {
     repositories {
         google()

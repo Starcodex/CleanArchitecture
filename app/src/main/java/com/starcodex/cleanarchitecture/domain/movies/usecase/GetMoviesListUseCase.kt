@@ -11,25 +11,30 @@ import java.util.*
 import javax.inject.Inject
 class GetMoviesListUseCase
 @Inject constructor(
-    private val localMoviesRepository: LocalMoviesSource,
-    private val remoteMoviesRepository: RemoteMoviesSource,
+    var localMoviesRepository: LocalMoviesSource,
+    var remoteMoviesRepository: RemoteMoviesSource,
     var executionThreads: ExecutionThreads) : GetMoviesListUseCaseSource
 {
 
-    override fun executeListLocal(category: String): Observable<List<MovieItem>>? {
+    override fun executeListLocal(category: String, onComplete: (it: List<MovieItem>) -> Unit): Disposable {
         return localMoviesRepository.getLocalMoviesList(category).map { it.map { t-> t.mapToDomain() } }
             .observeOn(executionThreads.io())
             .doOnEvent{ value, _ ->
-                if (value == null){
-                    executeListRemote(category)
+                if (value.isEmpty()){
+                    executeListRemote(category, onComplete)
                 }
             }
-            .toObservable()
+            .subscribe{
+                onComplete(it)
+            }
     }
 
-    override fun executeListRemote(category: String): Observable<List<MovieItem>>?{
+    override fun executeListRemote(category: String, onComplete: (it: List<MovieItem>) -> Unit): Disposable{
         return remoteMoviesRepository.getRemoteMoviesList(category).map { it.map { t-> t.mapToDomain() } }
             .observeOn(executionThreads.io())
+            .subscribe{
+                onComplete(it)
+            }
     }
 
 }

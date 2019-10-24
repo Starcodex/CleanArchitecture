@@ -14,7 +14,7 @@ android {
         versionName "1.0"
         //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testApplicationId "com.starcodex.cleanarchitecture.test"
-        testInstrumentationRunner "com.starcodex.cleanarchitecture.TestApplicationRunner"
+        testInstrumentationRunner "com.starcodex.cleanarchitecture.testutils.TestApplicationRunner"
     }
 
     testOptions {
@@ -107,7 +107,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.21'
     kapt 'com.google.dagger:dagger-android-processor:2.21'
 
-    // Android Test
+/*    // Android Test
     androidTestImplementation 'androidx.fragment:fragment-testing:1.1.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -128,7 +128,7 @@ dependencies {
     androidTestImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
     androidTestImplementation 'com.github.tmurakami:dexopener:0.12.1'
 
-    /* Dagger mock */
+    *//* Dagger mock *//*
     androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock:0.8.4'
     androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4'
     androidTestImplementation 'android.arch.core:core-testing:1.1.1'
@@ -151,6 +151,23 @@ dependencies {
 
 
     testImplementation "org.mockito:mockito-android:2.22.0"
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'*/
 
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_KOTLIN_VERSION"
+    testImplementation "junit:junit:$JUNIT_VERSION"
+
+    androidTestImplementation ("com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+
+    androidTestImplementation "org.mockito:mockito-android:$MOCKITO_VERSION"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 }

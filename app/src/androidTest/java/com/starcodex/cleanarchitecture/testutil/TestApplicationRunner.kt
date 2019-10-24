@@ -1,4 +1,4 @@
-package com.starcodex.cleanarchitecture
+package com.starcodex.cleanarchitecture.testutil
 
 import android.app.Instrumentation
 import android.content.Context
