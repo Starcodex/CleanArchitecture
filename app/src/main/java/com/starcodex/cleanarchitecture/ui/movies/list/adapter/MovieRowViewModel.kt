@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.starcodex.cleanarchitecture.BuildConfig.*
 import com.starcodex.cleanarchitecture.R
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
 
 class MovieRowViewModel(var movie: MovieItem): BaseObservable() {
 

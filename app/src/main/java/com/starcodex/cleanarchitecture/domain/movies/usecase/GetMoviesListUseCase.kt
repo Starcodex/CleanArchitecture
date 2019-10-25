@@ -3,15 +3,16 @@ package com.starcodex.cleanarchitecture.domain.movies.usecase
 import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.mapToDomain
 import com.starcodex.cleanarchitecture.data.movies.repository.LocalMoviesSource
 import com.starcodex.cleanarchitecture.data.movies.repository.RemoteMoviesSource
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
-import com.starcodex.cleanarchitecture.utils.commons.ExecutionThreads
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitecture.commons.app.ExecutionThreads
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 class GetMoviesListUseCase
 @Inject constructor(
     private val localMoviesRepository: LocalMoviesSource,
     private val remoteMoviesRepository: RemoteMoviesSource,
-    var executionThreads: ExecutionThreads)
+    var executionThreads: ExecutionThreads
+)
 {
 
     fun executeListLocal(category: String, onNext:(it: List<MovieItem>) -> Unit): Disposable {

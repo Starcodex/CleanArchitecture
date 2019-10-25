@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.starcodex.cleanarchitecture.R
 import com.starcodex.cleanarchitecture.databinding.MovieRowBinding
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
-import com.starcodex.cleanarchitecture.utils.commons.adapter.BindableViewHolder
-import com.starcodex.cleanarchitecture.utils.commons.adapter.ListAdapterItemsInvalidatorDiffCallback
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitecture.commons.adapter.BindableViewHolder
+import com.starcodex.cleanarchitecture.commons.adapter.ListAdapterItemsInvalidatorDiffCallback
 
 class MoviesListAdapter(private var context: Context, private var listener: OnItemClickListener)
     : ListAdapter<MovieItem,

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.RoomWarnings
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
 
 @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
 @Entity(tableName = "MOVIE")
@@ -43,4 +43,9 @@ class MovieEntity (
 )
 
 fun MovieEntity.mapToDomain() =
-    MovieItem(this.id,this.title,this.overview,this.poster_path)
+    MovieItem(
+        this.id,
+        this.title,
+        this.overview,
+        this.poster_path
+    )

@@ -1,7 +1,7 @@
 package com.starcodex.cleanarchitecture.ui.movies.list
 
 import androidx.lifecycle.LiveData
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
 
 interface MoviesListContract {
     interface View

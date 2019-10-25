@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.starcodex.cleanarchitecture.R
 import com.starcodex.cleanarchitecture.databinding.MainFragmentBinding
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
 import com.starcodex.cleanarchitecture.ui.movies.list.adapter.MoviesListAdapter
 import com.starcodex.cleanarchitecture.ui.movies.list.adapter.OnItemClickListener
-import com.starcodex.cleanarchitecture.utils.commons.BaseFragment
+import com.starcodex.cleanarchitecture.commons.BaseFragment
 import javax.inject.Inject
 import android.view.*
 import android.widget.AdapterView

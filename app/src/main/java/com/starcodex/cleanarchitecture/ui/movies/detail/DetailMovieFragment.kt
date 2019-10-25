@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.starcodex.cleanarchitecture.databinding.MovieDetailBinding
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
 import com.starcodex.cleanarchitecture.ui.movies.list.adapter.MovieRowViewModel
-import com.starcodex.cleanarchitecture.utils.commons.BaseFragment
+import com.starcodex.cleanarchitecture.commons.BaseFragment
 
 class DetailMovieFragment(var movieItem: MovieItem) : BaseFragment(){
 
