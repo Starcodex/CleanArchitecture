@@ -1,8 +1,8 @@
-package com.starcodex.cleanarchitecture.di.network
+package com.starcodex.cleanarchitecture.di.module.network
 
 import com.google.gson.GsonBuilder
 import com.starcodex.cleanarchitecture.BuildConfig.*
-import com.starcodex.cleanarchitecture.data.movies.datasorce.remote.MoviesListApiClient
+import com.starcodex.cleanarchitecture.data.movies.source.remote.MoviesListApiClient
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers

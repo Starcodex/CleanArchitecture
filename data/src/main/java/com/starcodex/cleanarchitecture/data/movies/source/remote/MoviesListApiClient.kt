@@ -1,7 +1,7 @@
-package com.starcodex.cleanarchitecture.data.movies.datasorce.remote
+package com.starcodex.cleanarchitecture.data.movies.source.remote
 
-import com.starcodex.cleanarchitecture.BuildConfig.API_KEY
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.MoviesListResponse
+import com.starcodex.cleanarchitecture.commons.BuildConfig.API_KEY
+import com.starcodex.cleanarchitecture.data.movies.source.entity.MoviesListResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

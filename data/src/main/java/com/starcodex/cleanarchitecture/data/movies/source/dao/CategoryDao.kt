@@ -1,9 +1,9 @@
-package com.starcodex.cleanarchitecture.data.movies.datasorce.dao
+package com.starcodex.cleanarchitecture.data.movies.source.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.CategoryEntity
+import com.starcodex.cleanarchitecture.data.movies.source.entity.CategoryEntity
 
 @Dao
 interface CategoryDao {

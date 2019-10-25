@@ -1,7 +1,7 @@
-package com.starcodex.cleanarchitecture.data.movies.datasorce.dao
+package com.starcodex.cleanarchitecture.data.movies.source.dao
 
 import androidx.room.*
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.MovieEntity
+import com.starcodex.cleanarchitecture.data.movies.source.entity.MovieEntity
 
 @Dao
 interface MovieDao {

@@ -1,6 +1,6 @@
 package com.starcodex.cleanarchitecture.data.movies.repository
 
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.MovieEntity
+import com.starcodex.cleanarchitecture.data.movies.source.entity.MovieEntity
 import io.reactivex.Observable
 
 interface LocalMoviesSource {

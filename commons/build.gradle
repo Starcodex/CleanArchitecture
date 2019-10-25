@@ -16,10 +16,27 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+
     buildTypes {
+        debug {
+
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+
         }
     }
 

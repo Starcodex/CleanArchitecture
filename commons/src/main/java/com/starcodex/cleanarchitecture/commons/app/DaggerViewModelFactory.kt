@@ -1,4 +1,4 @@
-package com.starcodex.cleanarchitecture.di
+package com.starcodex.cleanarchitecture.commons.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

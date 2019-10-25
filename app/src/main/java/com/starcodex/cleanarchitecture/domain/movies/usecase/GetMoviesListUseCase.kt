@@ -1,6 +1,6 @@
 package com.starcodex.cleanarchitecture.domain.movies.usecase
 
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.mapToDomain
+import com.starcodex.cleanarchitecture.data.movies.source.entity.mapToDomain
 import com.starcodex.cleanarchitecture.data.movies.repository.LocalMoviesSource
 import com.starcodex.cleanarchitecture.data.movies.repository.RemoteMoviesSource
 import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem

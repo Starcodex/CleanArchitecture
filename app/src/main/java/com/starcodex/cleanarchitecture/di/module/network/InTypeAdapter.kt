@@ -1,4 +1,4 @@
-package com.starcodex.cleanarchitecture.di.network
+package com.starcodex.cleanarchitecture.di.module.network
 
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader

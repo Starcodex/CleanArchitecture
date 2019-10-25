@@ -1,8 +1,8 @@
-package com.starcodex.cleanarchitecture.data.movies.datasorce.dao
+package com.starcodex.cleanarchitecture.data.movies.source.dao
 
 import androidx.room.*
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.CategoryMovieEntity
-import com.starcodex.cleanarchitecture.data.movies.datasorce.entity.MovieEntity
+import com.starcodex.cleanarchitecture.data.movies.source.entity.CategoryMovieEntity
+import com.starcodex.cleanarchitecture.data.movies.source.entity.MovieEntity
 import io.reactivex.Observable
 
 @Dao

@@ -1,4 +1,4 @@
-package com.starcodex.cleanarchitecture.data.movies.datasorce.entity
+package com.starcodex.cleanarchitecture.data.movies.source.entity
 
 class MoviesListResponse(var results: List<MovieEntity>)
 

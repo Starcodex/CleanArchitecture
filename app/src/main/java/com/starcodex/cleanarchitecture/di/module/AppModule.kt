@@ -1,4 +1,4 @@
-package com.starcodex.cleanarchitecture.di
+package com.starcodex.cleanarchitecture.di.module
 
 import com.starcodex.cleanarchitecture.commons.app.ExecutionThreads
 import dagger.Module
@@ -7,7 +7,7 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-@Module(includes = arrayOf(DataModule::class))
+@Module(includes = arrayOf(DataModule::class, ViewModelModule::class))
 class AppModule {
 
 
