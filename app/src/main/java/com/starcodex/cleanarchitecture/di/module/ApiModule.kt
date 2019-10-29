@@ -1,8 +1,7 @@
-package com.starcodex.cleanarchitecture.di.module.network
+package com.starcodex.cleanarchitecture.di.module
 
 import com.google.gson.GsonBuilder
-import com.starcodex.cleanarchitecture.BuildConfig.*
-import com.starcodex.cleanarchitecture.data.movies.source.remote.MoviesListApiClient
+import com.starcodex.cleanarchitecture.commons.BuildConfig.DOMAIN
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -15,9 +14,7 @@ class ApiModule {
 
     @Provides
     internal fun provideRetrofit(): Retrofit {
-        val gson = GsonBuilder().registerTypeAdapter(Int::class.java,
-            IntTypeAdapter()
-        ).create()
+        val gson = GsonBuilder().create()
         val gsonConverterFactory = GsonConverterFactory.create(gson)
 
         return Retrofit.Builder()
@@ -27,7 +24,5 @@ class ApiModule {
             .build()
     }
 
-    @Provides
-    fun provideMoviesListApiClient(retrofit: Retrofit) = retrofit.create(MoviesListApiClient::class.java)
 
 }

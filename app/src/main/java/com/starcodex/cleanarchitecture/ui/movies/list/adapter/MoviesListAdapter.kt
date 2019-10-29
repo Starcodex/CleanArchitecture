@@ -15,16 +15,13 @@ class MoviesListAdapter(private var context: Context, private var listener: OnIt
         BindableViewHolder<MovieRowBinding>>
     (ListAdapterItemsInvalidatorDiffCallback<MovieItem>()) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindableViewHolder<MovieRowBinding> {
         return BindableViewHolder(context, parent, R.layout.movie_row)
     }
 
     override fun onBindViewHolder(holder: BindableViewHolder<MovieRowBinding>, position: Int) {
         holder.binding.movieViewModel = MovieRowViewModel(getItem(position))
-        holder.binding.rowContent.setOnClickListener(View.OnClickListener {
-            listener.onItemClick(getItem(position))
-        })
+        holder.binding.rowContent.setOnClickListener { listener.onItemClick(getItem(position)) }
     }
 
 }

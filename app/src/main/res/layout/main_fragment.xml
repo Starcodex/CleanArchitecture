@@ -6,7 +6,7 @@
 
     <data>
         <variable name="moviesListViewModel"
-            type="com.starcodex.cleanarchitecture.ui.movies.list.MoviesListViewModel"/>
+            type="com.starcodex.cleanarchitecture.ui.movies.list.MoviesListViewModelImpl"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

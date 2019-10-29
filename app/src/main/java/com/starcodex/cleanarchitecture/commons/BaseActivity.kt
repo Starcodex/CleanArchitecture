@@ -21,7 +21,7 @@ open class BaseActivity: DaggerAppCompatActivity() {
         var handled = false
         val fragments = supportFragmentManager.fragments
         for (f in fragments) {
-            if (f != null && f is BaseFragment)
+            if (f != null && f is InjectableBaseFragment<*,*>)
                 handled = f.onBackPressed()
             if (handled) break
         }

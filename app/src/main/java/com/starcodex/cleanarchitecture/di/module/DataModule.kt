@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.starcodex.cleanarchitecture.BuildConfig.*
 import com.starcodex.cleanarchitecture.data.AppDatabase
-import com.starcodex.cleanarchitecture.di.module.network.ApiModule
 import dagger.Module
 import dagger.Provides
 

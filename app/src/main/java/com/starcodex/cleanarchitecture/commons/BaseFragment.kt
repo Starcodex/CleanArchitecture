@@ -1,14 +1,9 @@
 package com.starcodex.cleanarchitecture.commons
 
-import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import dagger.android.support.AndroidSupportInjection
 
-open class BaseFragment: Fragment() {
-
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
+abstract class BaseFragment : Fragment() {
+    fun enableHomeActionBar(enable: Boolean) = (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(enable)
     fun onBackPressed(): Boolean = false
 }
