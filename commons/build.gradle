@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+
+    buildTypes {
+        debug {
+
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "DOMAIN", "\"api.themoviedb.org/3\""
+            buildConfigField "String", "IMG_DOMAIN", "\"image.tmdb.org/t/p/\""
+            buildConfigField "String", "IMG_300", "\"w300/\""
+            buildConfigField "String", "IMG_500", "\"w500/\""
+            buildConfigField "String", "API_KEY", "\"8c0457b0a34b8e815c0e1ef2ff2aa7d1\""
+
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+    // Android X - Core
+    api "androidx.core:core-ktx:$androidXCoreVersion"
+
+    // Dagger 2
+    api "com.google.dagger:dagger:$daggerVersion"
+    api "com.google.dagger:dagger-android:$daggerVersion"
+    api "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    // RxJava
+    api "io.reactivex.rxjava2:rxandroid:$rXJava2Version"
+    api "io.reactivex.rxjava2:rxjava:$rXJava2Version"
+    api "io.reactivex.rxjava2:rxkotlin:$rXKotlinVersion"
+    api "io.reactivex.rxjava2:rxandroid:$rXJava2Version"
+
+}

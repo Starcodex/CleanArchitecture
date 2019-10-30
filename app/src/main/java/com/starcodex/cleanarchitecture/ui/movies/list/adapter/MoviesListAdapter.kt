@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.starcodex.cleanarchitecture.R
 import com.starcodex.cleanarchitecture.databinding.MovieRowBinding
-import com.starcodex.cleanarchitecture.domain.movies.model.MovieItem
-import com.starcodex.cleanarchitecture.utils.commons.adapter.BindableViewHolder
-import com.starcodex.cleanarchitecture.utils.commons.adapter.ListAdapterItemsInvalidatorDiffCallback
+import com.starcodex.cleanarchitexture.domain.movies.model.MovieItem
+import com.starcodex.cleanarchitecture.commons.adapter.BindableViewHolder
+import com.starcodex.cleanarchitecture.commons.adapter.ListAdapterItemsInvalidatorDiffCallback
 
 class MoviesListAdapter(private var context: Context, private var listener: OnItemClickListener)
     : ListAdapter<MovieItem,
         BindableViewHolder<MovieRowBinding>>
     (ListAdapterItemsInvalidatorDiffCallback<MovieItem>()) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindableViewHolder<MovieRowBinding> {
         return BindableViewHolder(context, parent, R.layout.movie_row)
@@ -22,9 +21,7 @@ class MoviesListAdapter(private var context: Context, private var listener: OnIt
 
     override fun onBindViewHolder(holder: BindableViewHolder<MovieRowBinding>, position: Int) {
         holder.binding.movieViewModel = MovieRowViewModel(getItem(position))
-        holder.binding.rowContent.setOnClickListener(View.OnClickListener {
-            listener.onItemClick(getItem(position))
-        })
+        holder.binding.rowContent.setOnClickListener { listener.onItemClick(getItem(position)) }
     }
 
 }
