@@ -1,1 +1,1 @@
-include ':app', ':domain', ':data', ':commons'
+include ':app', ':domain', ':data', ':commons', ':data_protobuf'

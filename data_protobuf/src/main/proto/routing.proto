@@ -1,0 +1,259 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mu.routing.api";
+option java_outer_classname = "Routing";
+
+package com.mu.routing.proto;
+
+service RoutingService {
+
+}
+// Clients
+service CompanyService {
+    rpc ListMassiveDeliverCompanies (ListMassiveDeliverCompaniesRequest) returns (ListMassiveDeliverCompaniesResponse);
+}
+
+message ListMassiveDeliverCompaniesRequest {
+
+}
+
+message ListMassiveDeliverCompaniesResponse {
+    repeated Company companies = 1;
+}
+
+message Company {
+    int32 id = 1;
+    string name = 2;
+}
+
+// Cities
+service CityService {
+    rpc ListCities (ListCitiesRequest) returns (ListCitiesResponse);
+}
+
+message ListCitiesRequest {
+    string nameQuery = 1;
+}
+
+message ListCitiesResponse {
+    repeated City cities = 1;
+}
+
+message City {
+    int32 id = 1;
+    string name = 2;
+    string geoName = 3;
+}
+
+// Client Points
+service ClientPointService {
+    rpc ListDistributionCenter (ListDistributionCenterRequest) returns (ListDistributionCenterResponse);
+    rpc CreateDistributionCenter (ClientPointRequest) returns (CreateStatusDistributionCenterResponse);
+    rpc DeleteDistributionCenter (deleteDistributionRequest) returns (deleteDistributionResponse);
+}
+message deleteDistributionRequest {
+    int32 id = 1;
+}
+message deleteDistributionResponse {
+    string response = 1;
+}
+
+
+message ListDistributionCenterRequest {
+    int32 companyId = 1;
+}
+message CreateStatusDistributionCenterResponse {
+    string status = 1;
+    string message = 2;
+}
+
+message ListDistributionCenterResponse {
+    repeated ClientPoint clientPoints = 1;
+}
+message ClientPointRequest{
+    ClientPoint clientPoint = 1;
+}
+message ClientPoint {
+    int32 id = 1;
+    int32 companyId = 2;
+    string name = 3;
+    string address = 4;
+    string lat = 5;
+    string lng = 6;
+    string status = 7;
+}
+
+// Massive Delivery Service
+service MassiveDeliveryService {
+    rpc CreateMassiveDelivery (CreateMassiveDeliveryRequest) returns (CreateMassiveDeliveryResponse);
+    rpc ListMassiveDelivery (ListMassiveDeliveryRequest) returns (ListMassiveDeliveryResponse);
+    rpc ListMassiveDeliveryService (ListMassiveDeliveryServiceRequest) returns (ListMassiveDeliveryServiceResponse);
+    rpc UpdateMassiveDeliveryService (UpdateMassiveDeliveryServiceRequest) returns (UpdateMassiveDeliveryServiceResponse);
+    rpc GetRouting (GetRoutingRequest) returns (GetRoutingResponse);
+    rpc ListRoutingVehicles (ListRoutingVehiclesRequest) returns (ListRoutingVehiclesResponse);
+    rpc ListRoutingServices (ListRoutingServicesRequest) returns (ListRoutingServicesResponse);
+    rpc Route (RouteRequest) returns (RouteResponse);
+    rpc Listen (ListenRequest) returns (stream ListenResponse);
+    rpc ProgramDelivery (ProgramDeliveryRequest) returns (ProgramDeliveryResponse);
+    rpc ListZones (ListZonesRequest) returns (ListZonesResponse);
+}
+
+message ListZonesRequest {
+    string userId = 1;
+}
+
+message ListZonesResponse {
+    repeated Zone zones = 1;
+}
+
+message Zone {
+    int32 id = 1;
+}
+
+message ProgramDeliveryRequest {
+    int32 requestId = 1;
+    int32 vehicleId = 2;
+    int32 userId = 3;
+    string zone = 4;
+    string subZone = 5;
+    string description = 6;
+}
+
+message ProgramDeliveryResponse {
+    string status = 1;
+    string message = 2;
+}
+
+message ListRoutingServicesRequest {
+    int32 vehicleId = 1;
+}
+
+message ListRoutingServicesResponse {
+    repeated MassiveDeliveryServiceDetail details = 1;
+}
+
+message ListRoutingVehiclesRequest {
+    int32 requestId = 1;
+}
+
+message ListRoutingVehiclesResponse {
+    repeated Vehicle vehicles = 1;
+}
+
+message Vehicle {
+    int32 vehicleId = 1;
+    int32 routingId = 2;
+    string plate = 4;
+    int32 capacity = 5;
+    int32 usedCapacity = 6;
+    string type = 7;
+    string apiServiceId = 8;
+    string apiServiceMessage = 9;
+}
+
+message GetRoutingRequest {
+    int32 requestId = 1;
+}
+
+message RoutedService {
+    MassiveDeliveryServiceDetail service = 1;
+    int32 order = 2;
+}
+
+message GetRoutingResponse {
+    repeated RoutedService routedService = 1;
+}
+
+message ListenRequest {
+
+}
+
+message ListenResponse {
+    string message = 1;
+}
+
+message UpdateMassiveDeliveryServiceRequest {
+    MassiveDeliveryServiceDetail detail = 1;
+}
+
+message UpdateMassiveDeliveryServiceResponse {
+    string status = 1;
+}
+
+message CreateMassiveDeliveryRequest {
+    int32 companyId = 1;
+    int32 cityId = 2;
+    int32 cediPointId = 3;
+    string startDate = 4;
+    string startTime = 5;
+    string endTime = 6;
+    string fileId = 7;
+    string cityName = 8;
+    string vehicleTypeName = 9;
+    int32 vehicleTypeId = 10;
+}
+
+message CreateMassiveDeliveryResponse {
+    string status = 1;
+    string message = 2;
+    MassiveDeliveryRequest deliveryRequest = 3;
+}
+
+message ListMassiveDeliveryRequest {
+
+}
+
+message ListMassiveDeliveryResponse {
+    repeated MassiveDeliveryRequest requests = 1;
+}
+
+message MassiveDeliveryRequest {
+    int32 requestId = 1;
+    string company = 2;
+    int32 companyId = 3;
+    string cedi = 4;
+    int32 cediId = 5;
+    string city = 6;
+    int32 cityId = 7;
+    string startDate = 8;
+    string startTime = 9;
+    string endTime = 10;
+    string lat = 11;
+    string lng = 12;
+    string cityName = 13;
+    string vehicleTypeName = 14;
+    int32 vehicleTypeId = 15;
+}
+
+message ListMassiveDeliveryServiceRequest {
+    int32 requestId = 1;
+}
+
+message ListMassiveDeliveryServiceResponse {
+    repeated MassiveDeliveryServiceDetail services = 1;
+}
+
+message RouteRequest {
+    int32 requestId = 1;
+}
+
+message RouteResponse {
+    string status = 1;
+    string result = 2;
+}
+
+message MassiveDeliveryServiceDetail {
+    string requestId = 1;
+    string serviceId = 2;
+    string clientId = 3;
+    string clientName = 4;
+    string address = 5;
+    string orderId = 6;
+    string weight = 7;
+    string phone = 8;
+    string status = 9;
+    string lat = 10;
+    string lng = 11;
+    int32 deliveryOrder = 12;
+}

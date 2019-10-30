@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 import androidx.lifecycle.ViewModelProviders
-import com.starcodex.cleanarchitecture.ui.movies.list.adapter.MovieRowViewModel
 import java.lang.reflect.ParameterizedType
 
 

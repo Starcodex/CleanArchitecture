@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mu.geologic.api";
+option java_outer_classname = "Geologic";
+
+package com.mu.geologic.proto;
+
+service GeologicService {
+    rpc Geocode ( GeocodeRequest ) returns ( GeocodeResponse );
+    rpc ReverseGeocode ( GeocodePositionRequest ) returns ( GeocodeResponse );
+    rpc DistanceGeolocation ( GeoDistanceRequest ) returns ( GeoDistanceResponse );
+}
+
+message GeocodeRequest {
+    string country = 1;
+    string city = 2;
+    string address = 3;
+}
+
+message GeocodePositionRequest {
+    string country = 1;
+    double longitude= 2;
+    double latitude= 3;
+}
+
+message GeoDistanceRequest{
+    string country = 1;
+    double originLongitude= 2;
+    double originLatitude= 3;
+    double destinationLongitude= 4;
+    double destinationLatitude= 5;
+}
+
+enum ResultType {
+    NOT_FOUND = 0;
+    FOUND = 1;
+    PARTIAL_MATCH = 2;
+}
+
+message Geolocation {
+    double lat = 1;
+    double lng = 2;
+}
+
+message GeocodeResponse{
+   string country = 1;
+   string state = 2;
+   string city = 3;
+   string locality = 4;
+   string neighborhood = 5;
+   string address = 6;
+   string postalCode = 7;
+   Geolocation location = 8;
+}
+
+message GeoDistanceResponse{
+    double duration = 1;
+    double distance  = 2;
+}
